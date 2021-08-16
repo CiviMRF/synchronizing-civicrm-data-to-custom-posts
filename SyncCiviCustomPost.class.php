@@ -48,7 +48,7 @@ class SyncCiviCustomPost {
   protected $title_field;
 
   private function __construct($post_type, $postID, $meta) {
-    $this->post_type = $post_type;
+    $this->post_type = sanitize_key($post_type);
     $this->meta = $meta;
     $this->sync_profile_id = $postID;
 
@@ -209,6 +209,7 @@ class SyncCiviCustomPost {
   protected function findExistingPost($civicrmId)
   {
     global $wpdb;
+
     $sql = "
     SELECT meta.post_id 
     FROM {$wpdb->prefix}postmeta meta
