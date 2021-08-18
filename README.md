@@ -15,8 +15,8 @@ Bugs can be reported at [Github](https://github.com/CiviMRF/synchronizing-civicr
 # Contributing
 
 The code of this plugin is published and maintained at [Github](https://github.com/CiviMRF/synchronizing-civicrm-data-to-custom-posts).
-The plugin is also published at [Wordpress.org](https://wordpress.org/plugins/integration-between-leaflet-map-and-civicrm)
-and this requires that we submit each release to the [Wordpress SVN](https://plugins.svn.wordpress.org/integration-between-leaflet-map-and-civicrm)
+The plugin is also published at [Wordpress.org](https://wordpress.org/plugins/synchronizing-civicrm-data-to-custom-posts) (**NOT YET**)
+and this requires that we submit each release to the [Wordpress SVN](https://plugins.svn.wordpress.org/synchronizing-civicrm-data-to-custom-posts)
 
 **Workflow for development**
 
@@ -35,7 +35,7 @@ Based on the instruction from [Learn with Daniel](https://learnwithdaniel.com/20
 1. To publish the release at Wordpress Plugin directory follow the following steps:
     1. Create a temp directory: `mkdir synchronizing-civicrm-data-to-custom-posts-tmp`
     1. Go into this directory: `cd synchronizing-civicrm-data-to-custom-posts-tmp`
-    1. Do an SVN checkout into SVN directory: `svn checkout --depth immediates https://plugins.svn.wordpress.org/integration-between-leaflet-map-and-civicrm svn`
+    1. Do an SVN checkout into SVN directory: `svn checkout --depth immediates https://plugins.svn.wordpress.org/synchronizing-civicrm-data-to-custom-posts svn`
     1. Clone the Github repository into Github directory: `git clone https://github.com/CiviMRF/synchronizing-civicrm-data-to-custom-posts.git github`
     1. Go into the Github directory: `cd github`
     1. Checkout the created release (in our example 1.0.0): `git checkout 1.0.0`
