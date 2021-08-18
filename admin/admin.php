@@ -52,19 +52,19 @@ class SyncCiviCustomPostAdmin {
   public function registerPostType() {
     $icon = file_get_contents( SYNC_CIVICRM_CUSTOM_POST_PATH . '/assets/admin-icon.svg' );
     $labels = array(
-      'name' => __('CiviCRM Data Synchronisations', $this->textDomain),
-      'singular_name' => __('CiviCRM Data Synchronisation', $this->textDomain),
-      'menu_name' => __('CiviCRM Custom Posts', $this->textDomain),
-      'name_admin_bar' => __('CiviCRM Custom Posts', $this->textDomain),
-      'all_items' => __('All Custom Posts', $this->textDomain),
-      'add_new_item' => __('Add New CiviCRM Custom Post', $this->textDomain),
-      'add_new' => __('Add New', $this->textDomain),
-      'new_item' => __('New  CiviCRM Custom Custom Post', $this->textDomain),
-      'edit_item' => __('Edit CiviCRM Custom Custom Post', $this->textDomain),
-      'update_item' => __('Update CiviCRM Custom Custom Post', $this->textDomain),
-      'view_item' => __('View CiviCRM Custom Custom Post', $this->textDomain),
-      'view_items' => __('View CiviCRM Custom Custom Post', $this->textDomain),
-      'search_items' => __('Search CiviCRM Custom Custom Post', $this->textDomain),
+      'name' => __('CiviCRM Data Synchronisations', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'singular_name' => __('CiviCRM Data Synchronisation', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'menu_name' => __('CiviCRM Custom Posts', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'name_admin_bar' => __('CiviCRM Custom Posts', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'all_items' => __('All Custom Posts', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'add_new_item' => __('Add New CiviCRM Custom Post', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'add_new' => __('Add New', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'new_item' => __('New  CiviCRM Custom Custom Post', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'edit_item' => __('Edit CiviCRM Custom Custom Post', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'update_item' => __('Update CiviCRM Custom Custom Post', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'view_item' => __('View CiviCRM Custom Custom Post', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'view_items' => __('View CiviCRM Custom Custom Post', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'search_items' => __('Search CiviCRM Custom Custom Post', 'SYNC_CIVICRM_CUSTOM_POST'),
     );
 
     $args = [
@@ -120,7 +120,7 @@ class SyncCiviCustomPostAdmin {
   public function addMetabox($post) {
     add_meta_box(
       'sync_civi_profile',
-      __( 'Sync Profile Settings' ),
+      __( 'Sync Profile Settings', 'SYNC_CIVICRM_CUSTOM_POST'),
       [$this, 'renderMetabox'],
       'sync_civi_profile',
       'normal',
@@ -128,7 +128,7 @@ class SyncCiviCustomPostAdmin {
     );
     add_meta_box(
       'sync_civi_profile_custom_field_info',
-      __( 'Custom Fields' ),
+      __( 'Custom Fields', 'SYNC_CIVICRM_CUSTOM_POST'),
       [$this, 'customFieldInfo'],
       'sync_civi_profile',
       'side',
@@ -191,6 +191,7 @@ class SyncCiviCustomPostAdmin {
     $sync_civi_profile_title_field = isset($meta['sync_civi_profile_title_field']) ? reset($meta['sync_civi_profile_title_field']) : '';
     $sync_civi_profile_sync_interval = isset($meta['sync_civi_profile_sync_interval']) ? reset($meta['sync_civi_profile_sync_interval']) : '10';
     $sync_civi_profile_post_name = isset($meta['sync_civi_profile_post_name']) ? reset($meta['sync_civi_profile_post_name']) : '';
+    $post_type = sanitize_key($sync_civi_profile_post_name);
     if ($sync_civi_profile_api_profile && $sync_civi_profile_api_entity && $sync_civi_profile_api_get) {
         $fieldApiParams['api_action'] = lcfirst($sync_civi_profile_api_get);
         $fieldApiOptions['cache'] = '5 minutes';
@@ -201,10 +202,10 @@ class SyncCiviCustomPostAdmin {
     }
     if (count($fields)) {
         ?>
-        <p><?php _e('Fields', $this->textDomain) ?></p>
+        <p><?php _e('Fields', 'SYNC_CIVICRM_CUSTOM_POST') ?></p>
         <ul>
             <?php foreach($fields as $field => $label) {
-                echo '<li><strong>' . $label . '</strong>: ' . $sync_civi_profile_post_name . '_civicrm_' . $field . '</li>';
+                echo '<li><strong>' . $label . '</strong>: ' . $post_type . '_civicrm_' . $field . '</li>';
             } ?>    
         </ul>
         <?php
@@ -229,7 +230,7 @@ class SyncCiviCustomPostAdmin {
 
     <table>
         <tr class="form-field">
-            <th scope="row"><label for="sync_civi_profile_api_profile"><?php _e('Connection Profile', $this->textDomain) ?> </label></th>
+            <th scope="row"><label for="sync_civi_profile_api_profile"><?php _e('Connection Profile', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
             <td><select name="sync_civi_profile_api_profile" id="sync_civi_profile_api_profile">
                 <?php foreach(sync_civicrm_custom_post_get_profiles() as $profile_name => $profile) { ?>
                   <option value="<?php echo esc_attr($profile_name); ?>" <?php if ($profile_name == $sync_civi_profile_api_profile) { ?> selected="selected" <?php } ?>><?php echo esc_html($profile['title']); ?></option>
@@ -237,38 +238,38 @@ class SyncCiviCustomPostAdmin {
             </select></td>
         </tr>
         <tr class="form-field">
-          <th scope="row"><label for="sync_civi_profile_api_entity"><?php _e('API Entity', $this->textDomain) ?> </label></th>
+          <th scope="row"><label for="sync_civi_profile_api_entity"><?php _e('API Entity', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
           <td><input name="sync_civi_profile_api_entity" type="text" id="sync_civi_profile_api_entity" value="<?php echo esc_attr($sync_civi_profile_api_entity); ?>" /></td>
         </tr>
         <tr class="form-field">
-          <th scope="row"><label for="sync_civi_profile_api_get"><?php _e('API Get Action', $this->textDomain) ?> </label></th>
+          <th scope="row"><label for="sync_civi_profile_api_get"><?php _e('API Get Action', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
           <td><input name="sync_civi_profile_api_get" type="text" id="sync_civi_profile_api_get" value="<?php echo esc_attr($sync_civi_profile_api_get); ?>" /></td>
         </tr>
         <tr class="form-field">
-          <th scope="row"><label for="sync_civi_profile_api_get_count"><?php _e('API Getcount Action', $this->textDomain) ?> </label></th>
+          <th scope="row"><label for="sync_civi_profile_api_get_count"><?php _e('API Getcount Action', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
           <td><input name="sync_civi_profile_api_get_count" type="text" id="sync_civi_profile_api_get_count" value="<?php echo esc_attr($sync_civi_profile_api_get_count); ?>" /></td>
         </tr>
         <tr class="form-field">
-            <th scope="row"><label for="sync_civi_profile_id_field"><?php _e('API ID Field', $this->textDomain) ?> </label></th>
+            <th scope="row"><label for="sync_civi_profile_id_field"><?php _e('API ID Field', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
             <td><input name="sync_civi_profile_id_field" type="text" id="sync_civi_profile_id_field" value="<?php echo esc_attr($sync_civi_profile_id_field); ?>" /></td>
         </tr>
         <tr class="form-field">
-            <th scope="row"><label for="sync_civi_profile_title_field"><?php _e('API Title Field', $this->textDomain) ?> </label></th>
+            <th scope="row"><label for="sync_civi_profile_title_field"><?php _e('API Title Field', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
             <td><input name="sync_civi_profile_title_field" type="text" id="sync_civi_profile_title_field" value="<?php echo esc_attr($sync_civi_profile_title_field); ?>" /></td>
         </tr>
         <tr class="form-field">
-            <th scope="row"><label for="sync_civi_profile_sync_interval"><?php _e('Synchronization interval (minutes)', $this->textDomain) ?> </label></th>
+            <th scope="row"><label for="sync_civi_profile_sync_interval"><?php _e('Synchronization interval (minutes)', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
             <td><input name="sync_civi_profile_sync_interval" type="text" id="sync_civi_profile_sync_interval" value="<?php echo esc_attr($sync_civi_profile_sync_interval); ?>" /></td>
         </tr>
         <tr class="form-field">
-            <th scope="row"><label for="sync_civi_profile_post_name"><?php _e('Custom Post Name', $this->textDomain) ?> </label></th>
+            <th scope="row"><label for="sync_civi_profile_post_name"><?php _e('Custom Post Name', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
             <td><input name="sync_civi_profile_post_name" type="text" id="sync_civi_profile_post_name" value="<?php echo esc_attr($sync_civi_profile_post_name); ?>" /></td>
         </tr>
     </table>
 
     <div class="clear"></div>
     <div id="publishing-action">
-        <?php submit_button( __( 'Save' ), 'primary large', 'publish', false ); ?>
+        <?php submit_button( __( 'Save', 'SYNC_CIVICRM_CUSTOM_POST'), 'primary large', 'publish', false ); ?>
     </div>
     <div class="clear"></div>
 

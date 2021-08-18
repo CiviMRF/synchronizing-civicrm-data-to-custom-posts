@@ -23,8 +23,6 @@ class SyncCiviCustomPost {
    */
   private static $instance = [];
 
-  private $textDomain = SYNC_CIVICRM_CUSTOM_POST_LANG;
-
   protected $post_type;
 
   protected $sync_profile_id;
@@ -162,19 +160,19 @@ class SyncCiviCustomPost {
   public function registerPostType() {
     $icon = file_get_contents( SYNC_CIVICRM_CUSTOM_POST_PATH . '/assets/admin-icon.svg' );
     $labels = array(
-      'name' => $this->post_type,
-      'singular_name' => $this->post_type,
-      'menu_name' => $this->post_type,
-      'name_admin_bar' => $this->post_type,
-      'all_items' => __('All items', $this->textDomain),
-      'add_new_item' => __('Add', $this->textDomain),
-      'add_new' => __('Add', $this->textDomain),
-      'new_item' => __('New', $this->textDomain),
-      'edit_item' => __('Edit', $this->textDomain),
-      'update_item' => __('Update', $this->textDomain),
-      'view_item' => __('View', $this->textDomain),
-      'view_items' => __('View', $this->textDomain),
-      'search_items' => __('Search', $this->textDomain),
+      'name' => $this->post_name,
+      'singular_name' => $this->post_name,
+      'menu_name' => $this->post_name,
+      'name_admin_bar' => $this->post_name,
+      'all_items' => __('All items', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'add_new_item' => __('Add', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'add_new' => __('Add', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'new_item' => __('New', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'edit_item' => __('Edit', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'update_item' => __('Update', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'view_item' => __('View', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'view_items' => __('View', 'SYNC_CIVICRM_CUSTOM_POST'),
+      'search_items' => __('Search', 'SYNC_CIVICRM_CUSTOM_POST'),
     );
 
     $args = [
@@ -186,7 +184,6 @@ class SyncCiviCustomPost {
       'exclude_from_search' => true,
       'show_in_rest' => true,
       'has_archive' => false,
-      //'register_meta_box_cb' => [$this, 'addMetabox'],
       'supports' => [
         'title',
       ],
@@ -194,6 +191,8 @@ class SyncCiviCustomPost {
       'rewrite' => true,
       'menu_icon' => 'data:image/svg+xml;base64,' . base64_encode($icon),
     ];
+
+    $args = apply_filters('sync_civicrm_custom_post_register_custom_post', $args);
 
     register_post_type($this->post_type, $args);
   }

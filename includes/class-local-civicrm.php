@@ -65,7 +65,7 @@ class Sync_CiviCRM_CustomPost_Connector_LocalCiviCRM {
   public static function loadProfile($profiles) {
     if (function_exists('civi_wp') && !function_exists('wpcmrf_get_core')) {
       $profiles['_local_civi_'] = [
-        'title' => __('Local CiviCRM'),
+        'title' => __('Local CiviCRM', 'SYNC_CIVICRM_CUSTOM_POST'),
         'function' => ['Sync_CiviCRM_CustomPost_Connector_LocalCiviCRM', 'api']
       ];
     }
