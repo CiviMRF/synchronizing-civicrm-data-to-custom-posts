@@ -192,7 +192,7 @@ class SyncCiviCustomPost {
       'menu_icon' => 'data:image/svg+xml;base64,' . base64_encode($icon),
     ];
 
-    $args = apply_filters('sync_civicrm_custom_post_register_custom_post', $args);
+    $args = apply_filters('sync_civicrm_custom_post_register_custom_post', $args, $this->post_type);
 
     register_post_type($this->post_type, $args);
   }
