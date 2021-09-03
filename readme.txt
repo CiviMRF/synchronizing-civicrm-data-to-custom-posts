@@ -2,10 +2,10 @@
 Contributors: jaapjansma
 Donate link: https://github.com/CiviMRF/synchronizing-civicrm-data-to-custom-posts
 Tags: CiviCRM, custom posts, acf, custom fields, api, connector, rest
-Requires at least: 5.2
-Tested up to: 5.6
+Requires at least: 5.8
+Tested up to: 5.8
 Requires PHP: 7.2
-Stable tag: 1.0.5
+Stable tag: 1.0.0
 License: AGPL-3.0
 
 Provides an tool for synchronizing CiviCRM data to custom posts in Wordpress.

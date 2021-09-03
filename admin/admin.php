@@ -205,7 +205,7 @@ class SyncCiviCustomPostAdmin {
         <p><?php _e('Fields', 'SYNC_CIVICRM_CUSTOM_POST') ?></p>
         <ul>
             <?php foreach($fields as $field => $label) {
-                echo '<li><strong>' . $label . '</strong>: ' . $post_type . '_civicrm_' . $field . '</li>';
+                echo '<li><strong>' . esc_html($label) . '</strong>: ' . esc_html($post_type) . '_civicrm_' . esc_html($field) . '</li>';
             } ?>    
         </ul>
         <?php
