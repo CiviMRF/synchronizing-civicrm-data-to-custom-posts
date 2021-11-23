@@ -1,5 +1,5 @@
 === Synchronizing CiviCRM data to Custom Posts ===
-Contributors: jaapjansma
+Contributors: jaapjansma, kainuk
 Donate link: https://github.com/CiviMRF/synchronizing-civicrm-data-to-custom-posts
 Tags: CiviCRM, custom posts, acf, custom fields, api, connector, rest
 Requires at least: 5.8
