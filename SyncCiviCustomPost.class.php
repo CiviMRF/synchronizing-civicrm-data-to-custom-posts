@@ -116,8 +116,8 @@ class SyncCiviCustomPost {
    */
   public function sync() {
     $syncedIds = array();
-    $apiParams['options']['limit'] = 0;
-    $result = sync_civicrm_custom_post_api_wrapper($this->api_profile, $this->api_entity, $this->api_get, $apiParams);
+    $options['limit'] = 0;
+    $result = sync_civicrm_custom_post_api_wrapper($this->api_profile, $this->api_entity, $this->api_get, [], $options);
     foreach($result['values'] as $row) {
       $id = $row[$this->id_field];
       $title = $row[$this->title_field];
