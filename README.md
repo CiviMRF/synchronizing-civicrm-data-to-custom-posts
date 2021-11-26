@@ -7,6 +7,7 @@ which gives you the ability to connect to an CiviCRM installation on a different
 ## Funded by
 
 * [Article 19](https://www.article19.org/)
+* [Bosplus](https://www.bosplus.be/)
 
 # Reporting bugs
 

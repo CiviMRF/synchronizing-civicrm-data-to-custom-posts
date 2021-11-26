@@ -5,10 +5,10 @@ Tags: CiviCRM, custom posts, acf, custom fields, api, connector, rest
 Requires at least: 5.8
 Tested up to: 5.8
 Requires PHP: 7.2
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: AGPL-3.0
 
-Provides an tool for synchronizing CiviCRM data to custom posts in Wordpress.
+Provides a tool for synchronizing CiviCRM data to custom posts in Wordpress.
 
 == Description ==
 
@@ -19,9 +19,11 @@ which gives you the ability to connect to an CiviCRM installation on a different
 **Funded by**
 
 * [Article 19](https://www.article19.org/)
+* [Bosplus](https://www.bosplus.be/)
 
 == Changelog ==
 
+1.0.3: Fixed limit 25 bug issue #2
 1.0.2: Updated logo
 1.0.1: Added logo, fixed title.
 1.0.0: First version.
