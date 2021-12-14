@@ -206,7 +206,7 @@ class SyncCiviCustomPostAdmin {
         <ul>
             <?php foreach($fields as $field => $label) {
                 echo '<li><strong>' . esc_html($label) . '</strong>: ' . esc_html($post_type) . '_civicrm_' . esc_html($field) . '</li>';
-            } ?>    
+            } ?>
         </ul>
         <?php
     }
@@ -263,7 +263,7 @@ class SyncCiviCustomPostAdmin {
         </tr>
         <tr class="form-field">
             <th scope="row"><label for="sync_civi_profile_post_name"><?php _e('Custom Post Name', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
-            <td><input name="sync_civi_profile_post_name" type="text" id="sync_civi_profile_post_name" value="<?php echo esc_attr($sync_civi_profile_post_name); ?>" /></td>
+            <td><input name="sync_civi_profile_post_name" type="text" id="sync_civi_profile_post_name" maxlength="20" value="<?php echo esc_attr($sync_civi_profile_post_name); ?>" /></td>
         </tr>
     </table>
 
