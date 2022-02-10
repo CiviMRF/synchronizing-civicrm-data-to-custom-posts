@@ -168,6 +168,7 @@ class SyncCiviCustomPostAdmin {
     $sync_civi_profile_id_field = sanitize_text_field($_POST['sync_civi_profile_id_field']);
     $sync_civi_profile_title_field = sanitize_text_field($_POST['sync_civi_profile_title_field']);
     $sync_civi_profile_sync_interval = sanitize_text_field($_POST['sync_civi_profile_sync_interval']);
+    $sync_civi_profile_already_registered = $_POST['sync_civi_profile_already_registered'] ? 1 : 0;
     $sync_civi_profile_post_name = sanitize_text_field($_POST['sync_civi_profile_post_name']);
 
     update_post_meta($post_id, 'sync_civi_profile_api_profile', $sync_civi_profile_api_profile);
@@ -177,6 +178,7 @@ class SyncCiviCustomPostAdmin {
     update_post_meta($post_id, 'sync_civi_profile_id_field', $sync_civi_profile_id_field);
     update_post_meta($post_id, 'sync_civi_profile_title_field', $sync_civi_profile_title_field);
     update_post_meta($post_id, 'sync_civi_profile_sync_interval', $sync_civi_profile_sync_interval);
+    update_post_meta($post_id, 'sync_civi_profile_already_registered', $sync_civi_profile_already_registered);
     update_post_meta($post_id, 'sync_civi_profile_post_name', $sync_civi_profile_post_name);
   }
 
@@ -190,6 +192,7 @@ class SyncCiviCustomPostAdmin {
     $sync_civi_profile_id_field = isset($meta['sync_civi_profile_id_field']) ? reset($meta['sync_civi_profile_id_field']) : 'id';
     $sync_civi_profile_title_field = isset($meta['sync_civi_profile_title_field']) ? reset($meta['sync_civi_profile_title_field']) : '';
     $sync_civi_profile_sync_interval = isset($meta['sync_civi_profile_sync_interval']) ? reset($meta['sync_civi_profile_sync_interval']) : '10';
+    $sync_civi_profile_already_registered = isset($meta['sync_civi_profile_already_registered']) ? reset($meta['sync_civi_profile_already_registered']) : '';    
     $sync_civi_profile_post_name = isset($meta['sync_civi_profile_post_name']) ? reset($meta['sync_civi_profile_post_name']) : '';
     $post_type = sanitize_key($sync_civi_profile_post_name);
     if ($sync_civi_profile_api_profile && $sync_civi_profile_api_entity && $sync_civi_profile_api_get) {
@@ -224,6 +227,7 @@ class SyncCiviCustomPostAdmin {
     $sync_civi_profile_id_field = isset($meta['sync_civi_profile_id_field']) ? reset($meta['sync_civi_profile_id_field']) : 'id';
     $sync_civi_profile_title_field = isset($meta['sync_civi_profile_title_field']) ? reset($meta['sync_civi_profile_title_field']) : '';
     $sync_civi_profile_sync_interval = isset($meta['sync_civi_profile_sync_interval']) ? reset($meta['sync_civi_profile_sync_interval']) : '10';
+    $sync_civi_profile_already_registered = isset($meta['sync_civi_profile_already_registered']) ? reset($meta['sync_civi_profile_already_registered']) : '';    
     $sync_civi_profile_post_name = isset($meta['sync_civi_profile_post_name']) ? reset($meta['sync_civi_profile_post_name']) : '';
     wp_nonce_field( 'sync_civi_profile_nonce_action', 'sync_civi_profile' );
     ?>
@@ -260,6 +264,10 @@ class SyncCiviCustomPostAdmin {
         <tr class="form-field">
             <th scope="row"><label for="sync_civi_profile_sync_interval"><?php _e('Synchronization interval (minutes)', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
             <td><input name="sync_civi_profile_sync_interval" type="text" id="sync_civi_profile_sync_interval" value="<?php echo esc_attr($sync_civi_profile_sync_interval); ?>" /></td>
+        </tr>
+        <tr class="form-field">
+            <th scope="row"><label for="sync_civi_profile_already_registered"><?php _e('Already Registered', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
+            <td><input name="sync_civi_profile_already_registered" type="checkbox" id="sync_civi_profile_already_registered" value="1" <?php if($sync_civi_profile_already_registered) { echo 'checked';} ?> /></td>
         </tr>
         <tr class="form-field">
             <th scope="row"><label for="sync_civi_profile_post_name"><?php _e('Custom Post Name', 'SYNC_CIVICRM_CUSTOM_POST') ?> </label></th>
