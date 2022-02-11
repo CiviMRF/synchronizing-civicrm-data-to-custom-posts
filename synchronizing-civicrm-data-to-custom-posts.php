@@ -2,7 +2,7 @@
 /*
 Plugin Name: Synchronizing CiviCRM data to Custom Posts
 Description: Provides a tool for synchronizing CiviCRM data to custom posts in Wordpress. You can use this plugin with Connector to CiviCRM with CiviMcRestFace (https://wordpress.org/plugins/connector-civicrm-mcrestface/)
-Version:     1.0.3
+Version:     1.0.4
 Author:      Jaap Jansma
 License:     AGPL3
 License URI: https://www.gnu.org/licenses/agpl-3.0.html

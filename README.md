@@ -46,6 +46,11 @@ Based on the instruction from [Learn with Daniel](https://learnwithdaniel.com/20
     1. Tag the release in SVN (in our example 1.0.0): `svn cp "trunk" "tags/1.0.0"`
     1. Now submit to the Wordpress SVN with a message: `svn ci -m 'Adding 1.0.0'`
 
+# Changelog
+
+## Release 1.0.4
+- Added restriction to ensure that post type names are not longer than 20 characters
+- Added an option _Is already registered_. This makes the reuse of existing post types possible. 
 
 # License
 
