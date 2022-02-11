@@ -54,12 +54,15 @@ class SyncCiviCustomPost {
     $this->api_entity = isset($meta['sync_civi_profile_api_entity']) ? reset($meta['sync_civi_profile_api_entity']) : '';
     $this->api_get = isset($meta['sync_civi_profile_api_egt']) ? reset($meta['sync_civi_profile_api_get']) : 'Get';
     $this->api_get_count = isset($meta['sync_civi_profile_api_get_count']) ? reset($meta['sync_civi_profile_api_get_count']) : 'Getcount';
+    $this->already_registered = isset($meta['sync_civi_profile_already_registered']) ? reset($meta['sync_civi_profile_already_registered']) : '';
     $this->post_name = isset($meta['sync_civi_profile_post_name']) ? reset($meta['sync_civi_profile_post_name']) : '';
     $this->id_field = isset($meta['sync_civi_profile_id_field']) ? reset($meta['sync_civi_profile_id_field']) : 'id';
     $this->sync_interval = isset($meta['sync_civi_profile_sync_interval']) ? reset($meta['sync_civi_profile_sync_interval']) : '';
     $this->title_field = isset($meta['sync_civi_profile_title_field']) ? reset($meta['sync_civi_profile_title_field']) : '';
 
-    add_action('init', [$this, 'registerPostType']);
+    if (!$this->already_registered) {
+      add_action('init', [$this, 'registerPostType']);
+    }
     if ($this->sync_interval) {
       add_action('init', [$this, 'setupCron']);
     }
